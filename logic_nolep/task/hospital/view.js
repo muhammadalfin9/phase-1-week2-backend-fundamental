@@ -22,6 +22,9 @@ node index.js findPatientBy: <name/id> <namePatient/idPatient>`);
   static loginView(obj) {
     console.log(`Login success, welcome ${obj.username}`);
   }
+   static logout() {
+    console.log(`Logout telah sukses`);
+  }
 
   static ErrorView(err) {
     console.log(`[ERROR]: ${err}`);

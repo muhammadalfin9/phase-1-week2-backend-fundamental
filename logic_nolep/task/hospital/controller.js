@@ -40,6 +40,15 @@ static login(name, password){
       }
     })
 }
+static logout(){
+  Employee.logout((err,obj)=>{
+    if(err){
+        HospitalView.ErrorView(err)
+      }else{
+        HospitalView.logout(obj)
+      }
+  })
+}
   // lanjutkan command yang lain
 }
 
