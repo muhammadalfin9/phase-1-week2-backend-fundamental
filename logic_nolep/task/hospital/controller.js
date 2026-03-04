@@ -19,8 +19,8 @@ NOTE :
 
 */
 class HospitalController {
-  static help(){
-    HospitalView.help()
+  static help() {
+    HospitalView.help();
   }
   static register(name, password, role) {
     Employee.register(name, password, role, (err, objArr) => {
@@ -31,25 +31,33 @@ class HospitalController {
       }
     });
   }
-static login(name, password){
-    Employee.login(name, password, (err,obj) =>{
-      if(err){
-        HospitalView.ErrorView(err)
-      }else{
-        HospitalView.loginView(obj)
+  static login(name, password) {
+    Employee.login(name, password, (err, obj) => {
+      if (err) {
+        HospitalView.ErrorView(err);
+      } else {
+        HospitalView.loginView(obj);
       }
-    })
-}
-static logout(){
-  Employee.logout((err,obj)=>{
-    if(err){
-        HospitalView.ErrorView(err)
-      }else{
-        HospitalView.logout(obj)
+    });
+  }
+  static logout() {
+    Employee.logout((err, obj) => {
+      if (err) {
+        HospitalView.ErrorView(err);
+      } else {
+        HospitalView.logout(obj);
       }
-  })
-}
-  // lanjutkan command yang lain
+    });
+  }
+  static addPatient(id, nama, penyakit) {
+    Patient.addPatient(id, nama, penyakit, (err, objArr) => {
+      if (err) {
+        HospitalView.ErrorView(err);
+      } else {
+        HospitalView.addpView(objArr);
+      }
+    });
+  }
 }
 
 module.exports = HospitalController;

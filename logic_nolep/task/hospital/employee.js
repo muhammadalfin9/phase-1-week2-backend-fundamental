@@ -36,31 +36,35 @@ class Employee {
       if (err) {
         console.log(err);
       } else {
-        let beda = data.find((el)=> el.login === true)
+        let beda = data.find((el) => el.login === true);
         let obj = data.find((el) => el.username === name);
         let newData = data;
-        if(!beda){
-        if (obj) {
-          if (obj.password === password) {
-            obj.login = true;
+        if (!beda) {
+          if (obj) {
+            if (obj.password === password) {
+              obj.login = true;
 
-            fs.writeFile("./employee.json", JSON.stringify(newData), (err) => {
-              if (err) {
-                console.log(err);
-              } else {
-                cb(err, obj);
-              }
-            });
+              fs.writeFile(
+                "./employee.json",
+                JSON.stringify(newData),
+                (err) => {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    cb(err, obj);
+                  }
+                },
+              );
+            } else {
+              cb("Password salah");
+            }
           } else {
-            console.log("Password salah");
+            cb("Username tidak ditemukan");
           }
         } else {
-          console.log("Username tidak ditemukan");
+          cb("anda sudah login, TIDAK BISA LOGIN BERSAMAAN.");
         }
-      }else{
-        console.log("anda sudah login, TIDAK BISA LOGIN BERSAMAAN.")
       }
-    }
     });
   }
 
@@ -70,7 +74,6 @@ class Employee {
         console.log(err);
       } else {
         let obj = data.find((el) => el.login === true);
-        console.log(obj)
         let newData = data;
         if (obj) {
           obj.login = false;
@@ -82,7 +85,7 @@ class Employee {
             }
           });
         } else {
-          console.log("anda tidak login di akun manapun");
+          cb("anda tidak login di akun manapun");
         }
       }
     });

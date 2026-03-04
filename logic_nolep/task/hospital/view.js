@@ -22,10 +22,14 @@ node index.js findPatientBy: <name/id> <namePatient/idPatient>`);
   static loginView(obj) {
     console.log(`Login success, welcome ${obj.username}`);
   }
-   static logout() {
+  static logout() {
     console.log(`Logout telah sukses`);
   }
-
+  static addpView(objArr) {
+    console.log(
+      `save data patient success "id":${objArr[0].id},"nama":${objArr[0].nama},"diagnosis":${objArr[0].diagnosis}. Total patient : ${objArr[1]}`,
+    );
+  }
   static ErrorView(err) {
     console.log(`[ERROR]: ${err}`);
   }
