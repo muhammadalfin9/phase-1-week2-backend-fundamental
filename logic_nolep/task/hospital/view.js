@@ -30,10 +30,15 @@ node index.js findPatientBy: <name/id> <namePatient/idPatient>`);
       `save data patient success "id":${objArr[0].id},"nama":${objArr[0].nama},"diagnosis":${objArr[0].diagnosis}. Total patient : ${objArr[1]}`,
     );
   }
+  static updView(obj){
+    console.log(`update pasien berhasil "id":${obj.id},"nama":${obj.nama},"diagnosis":${obj.diagnosis}.`)
+  }
   static ErrorView(err) {
     console.log(`[ERROR]: ${err}`);
   }
-
+static suces(id){
+  console.log(`succes menghapus pasien id: ${id}`)
+}
   static showTable(data) {
     console.table(data);
   }

@@ -1,1 +1,1 @@
-[{"username":"all","password":"123","position":"dokter","login":false},{"username":"app","password":"1234","position":"dokter","login":false}]
+[{"username":"all","password":"123","position":"dokter","login":true},{"username":"app","password":"1234","position":"dokter","login":false},{"username":"alpin","password":"123","position":"admin","login":false}]

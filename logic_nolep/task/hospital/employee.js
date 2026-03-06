@@ -90,6 +90,22 @@ class Employee {
       }
     });
   }
+  static show(cb) {
+    this.findAll((err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        let admin = data.find(
+          (el) => el.login === true && el.position === "admin",
+        );
+        if (admin) {
+          cb(null, data);
+        } else {
+          cb("HANYA ADMIN SAJA YANG BISA MELIHAT SEMUA DATA EMPLOYEE.");
+        }
+      }
+    });
+  }
 
   static findAll(cb) {
     fs.readFile("./employee.json", "utf8", (err, data) => {

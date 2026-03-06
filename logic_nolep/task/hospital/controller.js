@@ -49,12 +49,58 @@ class HospitalController {
       }
     });
   }
-  static addPatient(id, nama, penyakit) {
-    Patient.addPatient(id, nama, penyakit, (err, objArr) => {
+  static addPatient(nama, penyakit) {
+    Patient.addPatient(nama, penyakit, (err, objArr) => {
       if (err) {
         HospitalView.ErrorView(err);
       } else {
         HospitalView.addpView(objArr);
+      }
+    });
+  }
+  static updatePatient(nama, penyakit) {
+    Patient.updatePatient(nama, penyakit, (err, objArr) => {
+      if (err) {
+        HospitalView.ErrorView(err);
+      } else {
+        HospitalView.updView(objArr);
+      }
+    });
+  }
+  static deletePatient(id) {
+    Patient.deletePatient(id, (err, pasien) => {
+      if (err) {
+        HospitalView.ErrorView(err);
+      } else if (pasien) {
+        HospitalView.suces(pasien);
+      }
+    });
+  }
+  static show(input) {
+    if (input === "patient") {
+      Patient.show((err, data) => {
+        if (err) {
+          HospitalView.ErrorView(err);
+        } else {
+          HospitalView.showTable(data);
+        }
+      });
+    } else {
+      Employee.show((err, data) => {
+        if (err) {
+          HospitalView.ErrorView(err);
+        } else {
+          HospitalView.showTable(data);
+        }
+      });
+    }
+  }
+  static findPatientBy(input) {
+    Patient.findPatientBy(input, (err, data) => {
+      if (err) {
+        HospitalView.ErrorView(err);
+      } else {
+        HospitalView.showTable(data);
       }
     });
   }

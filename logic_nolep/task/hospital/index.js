@@ -1,21 +1,22 @@
+// `==========================
 // HOSPITAL INTERFACE COMMAND
-/*
-> node index.js register <username> <password> <jabatan> 
-> node index.js login <username> <password>
-> node index.js addPatient <id> <namaPasien> <penyakit1> <penyakit2> ....
-> node index.js updatePatient <id> <namaPasien> <penyakit1> <penyakit2> ....
-> node index.js deletePatient <id> <namaPasien> <penyakit1> <penyakit2> ....
-> node index.js logout
-> node index.js show <employee/patient> 
-> node index.js findPatientBy: <name/id> <namePatient/idPatient>
+// ==========================
+// node index.js register <username> <password> <jabatan>
+// node index.js login <username> <password>
+// node index.js addPatient <namaPasien> <penyakit1> <penyakit2> ....
+// node index.js updatePatient <namaPasien> <penyakit1> <penyakit2> ....
+// node index.js deletePatient <id>
+// node index.js logout
+// node index.js show <employee/patient>
+// node index.js findPatientBy: <name/id> <namePatient/idPatient>`
 
-NOTE :
+// NOTE :
 
-1. HANYA DOKTER SAJA YANG BOLEH PAKAI COMMAND CRUD PATIENT.
-2. TIDAK BISA LOGIN BERSAMAAN.
-3. HANYA ADMIN SAJA YANG BISA MELIHAT SEMUA DATA EMPLOYEE.
+// 1. HANYA DOKTER SAJA YANG BOLEH PAKAI COMMAND CRUD PATIENT.
+// 2. TIDAK BISA LOGIN BERSAMAAN.
+// 3. HANYA ADMIN SAJA YANG BISA MELIHAT SEMUA DATA EMPLOYEE.
 
-*/
+// */
 let command = process.argv[2];
 let argument = process.argv.slice(3);
 let HospitalController = require("./controller");
@@ -28,10 +29,10 @@ switch (command) {
     HospitalController.login(argument[0], argument[1])
     break;
   case "addPatient":
-    HospitalController.addPatient(argument[0], argument[1], argument.slice(2));
+    HospitalController.addPatient(argument[0], argument.slice(1));
     break;
   case "updatePatient":
-    HospitalController.updatePatient(argument[0], argument[1], argument.slice(2));
+    HospitalController.updatePatient(argument[0], argument.slice(1));
     break;
   case "deletePatient":
     HospitalController.deletePatient(argument[0]);
@@ -43,7 +44,7 @@ switch (command) {
     HospitalController.show(argument[0])
     break;
   case "findPatientBy":
-    HospitalController.findPatientBy(argument[0], argument[1]);
+    HospitalController.findPatientBy(argument[0]);
     break;
   default:
     HospitalController.help();
